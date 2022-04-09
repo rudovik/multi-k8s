@@ -1,6 +1,6 @@
 {
   "AWSEBDockerrunVersion": 2,
-  "containerDefnitions": [
+  "containerDefinitions": [
     {
       "name": "client",
       "image": "rudovik/multi-client",
