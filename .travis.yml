@@ -1,0 +1,22 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t rudovik/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true rudovik/react-test npm run test
+
+after_success:
+  - docker build -t rudovik/multi-client ./client
+  - docker build -t rudovik/multi-nginx ./nginx
+  - docker build -t rudovik/multi-api ./api
+  - docker build -t rudovik/multi-worker ./worker
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push them to docker hub
+  - docker push rudovik/multi-client
+  - docker push rudovik/multi-nginx
+  - docker push rudovik/multi-api
+  - docker push rudovik/multi-worker
