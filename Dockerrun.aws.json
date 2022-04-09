@@ -1,0 +1,36 @@
+{
+  "AWSEBDockrrunVersion": 2,
+  "containerDefnitions": [
+    {
+      "name": "client",
+      "image": "rudovik/multi-client",
+      "hostname": "client",
+      "essential": false
+    },
+    {
+      "name": "api",
+      "image": "rudovik/multi-api",
+      "hostname": "api",
+      "essential": false
+    },
+    {
+      "name": "worker",
+      "image": "rudovik/multi-worker",
+      "hostname": "worker",
+      "essential": false
+    },
+    {
+      "name": "nginx",
+      "image": "rudovik/multi-nginx",
+      "hostname": "nginx",
+      "essential": true,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": ["client", "api"]
+    }
+  ]
+}
