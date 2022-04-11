@@ -9,7 +9,7 @@ function App() {
     <Router>
       <div className='App'>
         <header className='App-header'>
-          <h1>Fib Calculator version 2</h1>
+          <h1>Fib Calculator version KUBERNETES!</h1>
           <img src={logo} className='App-logo' alt='logo' />
           <p>
             Edit <code>src/App.js</code> and save to reload.
