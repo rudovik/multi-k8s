@@ -17,6 +17,9 @@ export const Fib = () => {
   }
 
   const renderSeenIndexes = () => {
+    if (!seenIndexes) return 'no data'
+    if (!Array.isArray(seenIndexes)) return 'results are not array'
+
     return seenIndexes.map(({ number }) => number).join(', ')
   }
 
